@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">JokesActivity</string>
+    <string name="joke_textview">Joke will be added here</string>
+    <string name="action_settings">Settings</string>
+</resources>

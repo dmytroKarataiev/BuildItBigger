@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class JokesProvider {
 
+    public final static String JOKE = "joke";
+
     Random random;
 
     String[] jokes = {

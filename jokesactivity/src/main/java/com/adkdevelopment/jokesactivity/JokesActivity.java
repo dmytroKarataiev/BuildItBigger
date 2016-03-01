@@ -1,25 +1,21 @@
-package com.udacity.gradle.builditbigger;
+package com.adkdevelopment.jokesactivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.adkdevelopment.jokesactivity.JokesActivity;
-import com.example.JokesProvider;
+/**
+ * Created by karataev on 2/29/16.
+ */
+public class JokesActivity extends AppCompatActivity {
 
-
-public class MainActivity extends AppCompatActivity {
-
-    JokesProvider jokesProvider;
+    public static String JOKE = "joke";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        jokesProvider = new JokesProvider();
+        setContentView(R.layout.jokes_activity);
     }
 
 
@@ -44,15 +40,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    public void tellJoke(View view) {
-        //Toast.makeText(this, jokesProvider.getJoke(), Toast.LENGTH_SHORT).show();
-
-        // Start AndroidLibrary activity
-        Intent intent = new Intent(this, JokesActivity.class);
-        intent.putExtra(JokesProvider.JOKE, jokesProvider.getJoke());
-        startActivity(intent);
-    }
-
 
 }

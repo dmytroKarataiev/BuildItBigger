@@ -139,5 +139,6 @@
     <orderEntry type="library" exported="" name="appcompat-v7-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-basement-8.3.0" level="project" />
     <orderEntry type="module" module-name="jokesprovider" exported="" />
+    <orderEntry type="module" module-name="jokesactivity" exported="" />
   </component>
 </module>
