@@ -18,6 +18,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+        }
     }
     dexOptions {
         incremental true
@@ -30,6 +33,14 @@ android {
     packagingOptions {
         exclude 'LICENSE.txt'
     }
+    productFlavors{
+        free {
+            applicationId "com.udacity.gradle.builditbigger.free"
+        }
+        paid {
+            applicationId "com.udacity.gradle.builditbigger.paid"
+        }
+    }
 
 }
 
@@ -37,7 +48,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     // Added for AdMob
     compile project(':jokesactivity')
-    compile 'com.google.android.gms:play-services:8.3.0'
+    freeCompile 'com.google.android.gms:play-services:8.3.0'
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.android.support:support-annotations:23.0.1'
 

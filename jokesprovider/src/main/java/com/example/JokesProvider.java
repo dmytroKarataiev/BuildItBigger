@@ -24,4 +24,8 @@ public class JokesProvider {
         int jokeNumber = random.nextInt(jokes.length);
         return jokes[jokeNumber];
     }
+
+    public String getFreeJoke() {
+        return "Pay first!";
+    }
 }

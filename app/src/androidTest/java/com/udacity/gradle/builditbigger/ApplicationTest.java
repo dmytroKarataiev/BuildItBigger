@@ -2,13 +2,17 @@ package com.udacity.gradle.builditbigger;
 
 import android.test.ApplicationTestCase;
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
 
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
  */
 public class ApplicationTest extends ApplicationTestCase<MyApplication> {
+
+    private final String LOG_TAG = ApplicationTest.class.getSimpleName();
 
     Exception mError = null;
     CountDownLatch signal = null;
@@ -30,8 +34,8 @@ public class ApplicationTest extends ApplicationTestCase<MyApplication> {
 
     public void testAlbumGetTask() throws InterruptedException {
 
-        MainActivity.EndpointsAsyncTask task = new MainActivity.EndpointsAsyncTask();
-        task.setListener(new MainActivity.EndpointsAsyncTask.GetTaskListener() {
+        FetchJokesEndpoint task = new FetchJokesEndpoint();
+        task.setListener(new FetchJokesEndpoint.GetTaskListener() {
             @Override
             public void onComplete(String jsonString, Exception e) {
                 result = jsonString;
@@ -41,9 +45,32 @@ public class ApplicationTest extends ApplicationTestCase<MyApplication> {
         }).execute();
         signal.await();
 
+        String output = null;
+
+        try {
+            output = task.get();
+        } catch (ExecutionException e) {
+            Log.e(LOG_TAG, "Error " + e);
+        }
+
         assertNull(mError);
+        assertNotNull(output);
         assertFalse(TextUtils.isEmpty(result));
         assertTrue(result, result.length() > 0);
+        assertTrue(output, output.length() > 0);
+    }
 
+    public void testJoke() {
+        FetchJokesEndpoint fetchJokesEndpoint = new FetchJokesEndpoint();
+        String result = null;
+
+        try {
+            result = fetchJokesEndpoint.execute().get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.e(LOG_TAG, "Error in testJoke() " + e);
+        }
+
+        assertNotNull(result);
+        assertTrue(result, result.length() > 0);
     }
 }
