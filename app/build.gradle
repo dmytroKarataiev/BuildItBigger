@@ -60,3 +60,15 @@ dependencies {
     androidTestCompile 'com.android.support.test:runner:0.4.1'
 
 }
+
+// run this test to start a local backend, run all tests and close the backend
+task runAppEngine (dependsOn: ":backend:appengineRun") {
+    project(":backend").afterEvaluate { backend ->
+        backend.extensions.appengine.daemon = true
+    }
+}
+
+task checkTests (dependsOn: ":app:connectedCheck"){}
+
+runAppEngine.finalizedBy checkTests
+checkTests.finalizedBy ":backend:appengineStop"

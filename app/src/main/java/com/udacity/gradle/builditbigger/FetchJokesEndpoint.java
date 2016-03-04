@@ -10,6 +10,8 @@ import com.adkdevelopment.jokesactivity.JokesActivity;
 import com.example.karataev.myapplication.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
+import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
+import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import java.io.IOException;
 
@@ -29,7 +31,14 @@ public class FetchJokesEndpoint extends AsyncTask<Activity, Void, String> {
     protected String doInBackground(Activity... params) {
         if(myApiService == null) {
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
-                    .setRootUrl("https://builditbigger-1238.appspot.com/_ah/api/");
+                    //.setRootUrl("https://builditbigger-1238.appspot.com/_ah/api/")
+                    .setRootUrl("http://192.168.0.6:8080/_ah/api/")
+                    .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
+                        @Override
+                        public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
+                            abstractGoogleClientRequest.setDisableGZipContent(true);
+                        }
+                    });
 
             myApiService = builder.build();
         }
