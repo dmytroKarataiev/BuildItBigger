@@ -15,3 +15,7 @@
 * Google Ads API.
 * Addiditonal Java and Android Libraries.
 * Google Cloud Endpoints (both local and online).
+
+## Android Library
+* Depending on the flavor of the app library either shows a not-so-funny joke, or downloads a comics from xkcd.
+* Uses libraries: Picasso, GSON, OkHttp.
