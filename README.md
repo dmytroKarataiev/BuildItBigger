@@ -10,11 +10,11 @@
 * Gradle build has a task, which starts local GCE, tests the app and shutdowns the GCE.
 
 ## Used technologies
-* Gradle, scripts.
-* Android Connected Tests.
-* Google Ads API.
-* Addiditonal Java and Android Libraries.
-* Google Cloud Endpoints (both local and online).
+* [Gradle, tasks.](https://github.com/dmytroKarataiev/BuildItBigger/blob/master/build.gradle)
+* [Android Connected Tests.](https://github.com/dmytroKarataiev/BuildItBigger/blob/master/app/src/androidTest/java/com/udacity/gradle/builditbigger/ApplicationTest.java)
+* [Google Ads API.](https://github.com/dmytroKarataiev/BuildItBigger/blob/master/app/src/free/java/com/udacity/gradle/builditbigger/MainActivityFragment.java)
+* Addiditonal integrated [Java](https://github.com/dmytroKarataiev/BuildItBigger/blob/master/jokesprovider/src/main/java/com/example/JokesProvider.java) and [Android Libraries](https://github.com/dmytroKarataiev/BuildItBigger/blob/master/jokesactivity/src/main/java/com/adkdevelopment/jokesactivity/JokesActivityFragment.java).
+* [Google Cloud Endpoints (both local and online).](https://github.com/dmytroKarataiev/BuildItBigger/tree/master/backend/src/main/java/com/example/karataev/myapplication/backend)
 
 ## Android Library
 * Depending on the flavor of the app library either shows a not-so-funny joke, or downloads a comics from xkcd.
